@@ -1,0 +1,115 @@
+#include <iostream>
+#include <time.h>
+#include <vector>
+#include <unistd.h>
+
+#define MAX_VEC 100
+
+void swap(int& a, int& b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+void vector(std::vector<int>& vec, int m) {
+    srand(time(NULL));
+    for (int i = 0; i < vec.size(); i++) {
+        vec[i] = rand() % m;
+    }
+}
+
+int partitie(std::vector<int>& vec, int low, int high) {
+    int pivot = vec[high];
+    int i = (low - 1);
+
+    for (int j = low; j <= high - 1; j++) {
+        if (vec[j] <= pivot) {
+            i++;
+            swap(vec[i], vec[j]);
+        }
+    }
+    swap(vec[i + 1], vec[high]);
+    return (i + 1);
+}
+
+void quickSort(std::vector<int>& vec, int low, int high) {
+    if (low < high) {
+        int pi = partitie(vec, low, high);
+
+        quickSort(vec, low, pi - 1);
+        quickSort(vec, pi + 1, high);
+    }
+}
+
+int main() {
+
+    char choice;
+    bool reia = true;
+
+    do {
+
+        srand(time(NULL));
+
+        int m, n;
+
+        do {
+            system("cls");
+
+            std::cout << "Introduce-ti numarul maxim de elemente a vectorului (max 100): ";
+            std::cin >> n;
+
+            if(n > MAX_VEC || n < 0) {
+                std::cout << "Ati introdus un numar invalid, reincercati...\n";
+                sleep(3);
+            }
+        } while (n > MAX_VEC || n < 0);
+
+        std::cout << "Introduce-ti valoarea maxima a fiecarui element din vector: ";
+        std::cin >> m;
+
+        std::vector<int> vec(n);
+
+        vector(vec, m);
+
+        std::cout << "Vectorul inițial: ";
+        for (int i = 0; i < n; i++) {
+            std::cout << vec[i] << " ";
+        }
+        std::cout << std::endl;
+
+        quickSort(vec, 0, n - 1);
+
+        std::cout << "Vectorul sortat: ";
+        for (int i = 0; i < n; i++) {
+            std::cout << vec[i] << " ";
+        }
+
+        sleep(5);
+
+        do{
+
+        system("cls");
+        std::cout << "Doriti sa reluati programul? (Y/N): ";
+        std::cin >> choice;
+
+            if(choice != 'Y' && choice != 'y' && choice != 'N' && choice != 'n') {
+                std::cout << "Optiune invalida, va rog reincercati (Y/N)...";
+                sleep(3);
+            }
+        }while (choice != 'Y' && choice != 'y' && choice != 'N' && choice != 'n');
+
+        if(choice == 'Y' || choice == 'y') {
+            std::cout << "Programul va relua...";
+            sleep(3);
+        }
+        else if(choice == 'N' || choice == 'n') {
+            std::cout << "Inchidere program...";
+            sleep(3);
+        }
+        else {
+            std::cout << "Optiune invalida...";
+            sleep(3);
+        }
+    }while (choice == 'Y' || choice == 'y');
+    return 0;
+}

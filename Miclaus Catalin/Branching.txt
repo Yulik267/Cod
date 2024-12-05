@@ -1,0 +1,126 @@
+Branching?
+
+catalin.miclaus@catalin_miclaus MINGW64 ~
+$ cd Desktop/
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop
+$ ll
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop
+$ cd PA
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (main)
+$ ls
+'2 sortari.ppt'   cheie_servici.pub   cheie_tutorial.pub   readme.txt
+ cheie_servici    cheie_tutorial     'Miclaus Catalin'/    TAP-PA/
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (main)
+$ git config --global user.name "miclauscatalin"
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (main)
+$ git config --global user.email "miclaus.catalin@gmail.com"
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (main)
+$ eval "$(ssh-agent -s)"
+Agent pid 1821
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (main)
+$ ssh-add cheie_servici
+Identity added: cheie_servici (miclaus.catalin@gmail.com)
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (main)
+$ ssh -T git@github.com
+Hi miclauscatalin! You've successfully authenticated, but GitHub does not provide shell access.
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (main)
+$ pwd
+/c/Users/catalin.miclaus/Desktop/PAcatalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (main)
+$ cd Miclaus\ Catalin/
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA/Miclaus Catalin (master)
+$ git init
+Reinitialized existing Git repository in C:/Users/catalin.miclaus/Desktop/PA/Miclaus Catalin/.git/
+
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA/Miclaus Catalin (master)
+$ git remote add origin git@github.com:coneasorin/TAP-PA.git
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA/Miclaus Catalin (master)
+$ ls
+bublesort.py  insertion.py  merge.py  quicksort.py  radix.py
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA/Miclaus Catalin (master)
+$ git add .
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA/Miclaus Catalin (master)
+$ pwd
+/c/Users/catalin.miclaus/Desktop/PA/Miclaus Catalin
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA/Miclaus Catalin (master)
+$ rm -rf .git
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA/Miclaus Catalin (main)
+$ cd ..
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (main)
+$ git add "Miclaus Catalin"/*
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (main)
+$ git commit -m "Al 13-lea upload/razboinic :)"
+[main 2c9f312] Al 13-lea upload/razboinic :)
+ 1 file changed, 53 insertions(+)
+ create mode 100644 Miclaus Catalin/radix.py
+
+ERROR!!!!
+###########catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (main)
+###########$ git push -u origin studenti
+###########error: src refspec studenti does not match any
+###########error: failed to push some refs to 'github.com:coneasorin/TAP-PA.git'
+
+
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (main)
+$ git ls-remote --heads origin
+1d85bb9d799be0bb128c5755bf3453ad8c2282b6        refs/heads/main
+7a14e3c19fd1fc5c3ee62056ce03923595d1e817        refs/heads/master
+cee3b972e1bc09ab746121557335490d0bc0d9b9        refs/heads/studenti
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (main)
+$ git branch -M studenti
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (studenti)
+$ git pull origin studenti --rebase
+remote: Enumerating objects: 155, done.
+remote: Counting objects: 100% (15/15), done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 155 (delta 4), reused 6 (delta 1), pack-reused 140 (from 1)
+Receiving objects: 100% (155/155), 40.29 KiB | 343.00 KiB/s, done.
+Resolving deltas: 100% (41/41), done.
+From github.com:coneasorin/TAP-PA
+ * branch            studenti   -> FETCH_HEAD
+ * [new branch]      studenti   -> origin/studenti
+Successfully rebased and updated refs/heads/studenti.
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA (studenti)
+$ cd Miclaus\ Catalin/
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA/Miclaus Catalin (studenti)
+$ git push -u origin studenti
+Enumerating objects: 22, done.
+Counting objects: 100% (22/22), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (20/20), done.
+Writing objects: 100% (21/21), 1.06 MiB | 14.06 MiB/s, done.
+Total 21 (delta 7), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (7/7), completed with 1 local object.
+To github.com:coneasorin/TAP-PA.git
+   cee3b97..fe8c7a5  studenti -> studenti
+branch 'studenti' set up to track 'origin/studenti'.
+
+catalin.miclaus@catalin_miclaus MINGW64 ~/Desktop/PA/Miclaus Catalin (studenti)
+$
+
+
+
+
+
+
+
+
